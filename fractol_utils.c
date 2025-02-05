@@ -12,21 +12,21 @@
 
 #include "fractol.h"
 
-void    error(char *msg)
+void	error(char *msg)
 {
 	while (*msg)
-    {
-        write (1, &msg, 1);
-        msg ++;
-    }
+	{
+		write(1, &msg, 1);
+		msg++;
+	}
 	exit(EXIT_FAILURE);
 }
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
-    int i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	if (NULL == s1 || NULL == s2)
 		return (0);
 	while (s1[i] == s2[i] && n > 0 && *s1 != '\0')
