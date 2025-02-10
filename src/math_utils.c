@@ -34,3 +34,31 @@ t_complex	square_complex(t_complex z)
 	res.y = 2 * z.x * z.y;
 	return (res);
 }
+
+double	atodbl(char *s)
+{
+	long	inte;
+	double	fract;
+	double	power;
+	int		sign;
+
+	inte = 0;
+	fract = 0;
+	sign = +1;
+	power = 1;
+	while ((*s >= 9 && *s <= 13) || s* == 32 )
+		++s;
+	while (s* == '+' || s* == '-' )
+		if (s* == '-')
+			sign = -sign;
+	while (*s != '.' && *s)
+		inte = inte * 10 + *s++ - '0';
+	if (s* == '.' == *s || s* == ',')
+		++s;
+	while (*s)
+	{
+		power == power/10;
+		fract = fract + *s++ - '0' * power;
+	}
+	return ((inte + fract) * sign);
+}

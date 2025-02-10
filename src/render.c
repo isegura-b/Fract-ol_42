@@ -20,6 +20,20 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pixels_ptr + offset) = color;
 }
 
+static void	mandel_vs_julia(t_complex *z, t_complex *c, t_fractal *fractal)
+{	
+	if (!ft_strncmp(fractal->name, "julia", 5))
+	{
+		c->x = fractal->julia_x;
+		c->y = fractal->julia_y;
+	}
+	else
+	{
+		c->x = z->x;
+		c->y = z->y;
+	}
+}
+
 //colores fractal
 
 
@@ -30,10 +44,11 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	int			i;
 	int			color;
 
-	z.x = 0.0;
-	z.y = 0.0;
-	c.x = fractal->zoom * (map(x, -2, +2, WIDTH)) + fractal->shift_x;
-	c.y = fractal->zoom * (map(y, +2, -2, HEIGHT)) + fractal->shift_y;
+	z.x = fractal->zoom * (map(x, -2, +2, WIDTH)) + fractal->shift_x;
+	z.y = fractal->zoom * (map(y, +2, -2, HEIGHT)) + fractal->shift_y;
+	
+	fractal_choose(&z, &c, fractal);
+	
 	i = 0;
 	my_pixel_put(x, y, &fractal->img, BLACK);
 	while (i < fractal->iterations_defintion)
