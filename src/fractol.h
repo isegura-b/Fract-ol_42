@@ -6,7 +6,7 @@
 /*   By: isegura- <isegura-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:24:35 by isegura-          #+#    #+#             */
-/*   Updated: 2025/01/28 14:12:57 by isegura-         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:44:01 by isegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,19 @@ typedef struct s_fractal
 	double	julia_y;
 }			t_fractal;
 
-# include "minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include <X11/X.h>
-	//interactuar con el servidor de ventanas del sistema X Window System
-# include <X11/keysym.h> //entenderse sin hexadec
+# include <X11/keysym.h>
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 void		error(char *msg);
-int			ft_strncmp(char *s1, char *s2, int n);
+int			ft_strncmp(char *s1, char *s2);
+int			julia_error(char *av3, char	*av4);
 
+void		data_init(t_fractal *fractal);
 void		data_init(t_fractal *fractal);
 void		fractal_init(t_fractal *fractal);
 
@@ -68,7 +69,7 @@ double		map(double unscaled_num, double new_min, double new_max,
 				double old_max);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
-double	atodbl(char *s);
+double		atodbl(char *s);
 
 void		handle_pixel(int x, int y, t_fractal *fractal);
 void		fractal_render(t_fractal *fractal);

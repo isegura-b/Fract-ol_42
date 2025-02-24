@@ -6,7 +6,7 @@
 /*   By: isegura- <isegura-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:25:03 by isegura-          #+#    #+#             */
-/*   Updated: 2025/01/28 11:56:29 by isegura-         ###   ########.fr       */
+/*   Updated: 2025/02/23 22:58:01 by isegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,12 @@ void	error(char *msg)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_strncmp(char *s1, char *s2, int n)
+int	ft_strncmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	if (NULL == s1 || NULL == s2)
-		return (0);
-	while (s1[i] == s2[i] && n > 0 && *s1 != '\0')
-	{
+	while (s1[i] == s2[i] && s1[i] != '\0')
 		++i;
-		--n;
-	}
-	return (*s1 - *s2);
+	return (s1[i] - s2[i]);
 }
