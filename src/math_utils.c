@@ -6,7 +6,7 @@
 /*   By: isegura- <isegura-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:25:56 by isegura-          #+#    #+#             */
-/*   Updated: 2025/02/12 19:29:37 by isegura-         ###   ########.fr       */
+/*   Updated: 2025/02/24 02:35:16 by isegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,29 @@ t_complex	square_complex(t_complex z)
 
 double	atodbl(char *s)
 {
-	long	inte;
-	double	fract;
+	double	res;
 	double	power;
 	int		sign;
 
-	inte = 0;
-	fract = 0;
+	res = 0;
 	sign = +1;
 	power = 1;
-	while ((*s >= 9 && *s <= 13) || *s == 32 )
+	while ((*s >= 9 && *s <= 13) || *s == 32)
 		++s;
-	while (*s == '+' || *s == '-' )
+	while (*s == '+' || *s == '-')
 	{
 		if (*s == '-')
 			sign = -sign;
 		s++;
 	}
 	while (*s != '.' && *s)
-		inte = inte * 10 + *s++ - '0';
-	if (*s == '.'|| *s == ',')
+		res = res * 10 + *s++ - '0';
+	if (*s == '.' || *s == ',')
 		++s;
 	while (*s)
 	{
-		power = power/10;
-		fract = fract + (*s++ - '0') * power;
+		power = power / 10;
+		res = res + (*s++ - '0') * power;
 	}
-	return ((inte + fract) * sign);
+	return (res * sign);
 }

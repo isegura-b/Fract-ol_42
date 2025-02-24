@@ -6,38 +6,44 @@
 /*   By: isegura- <isegura-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 23:17:45 by isegura-          #+#    #+#             */
-/*   Updated: 2025/02/24 01:15:44 by isegura-         ###   ########.fr       */
+/*   Updated: 2025/02/24 02:55:50 by isegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int len(char *n)
+static int	len(char *n)
 {
 	int	i;
 
 	i = 0;
 	while (n[i])
-	{	
+	{
 		i++;
 	}
 	return (i);
 }
 
-static int is_not_num(char *n)
+static int	is_not_num(char *n)
 {
 	int	i;
 	int	flag;
+	int	min;
 
 	i = 0;
 	flag = 0;
-	while ((n[i] >= '0' && n[i] <= '9') || n[i] == '.')
+	min = 0;
+	while ((n[i] >= '0' && n[i] <= '9') || n[i] == '.' || n[i] == '-')
 	{
 		if (n[i] == '.')
 		{
-			if (flag != 0)
+			if (flag++ > 0)
 				return (1);
-			flag++;
+		}
+		if (n[i] == '-')
+		{
+			if (min++ != 0 || !n[i + 1])
+				return (1);
 		}
 		i++;
 	}
@@ -46,7 +52,7 @@ static int is_not_num(char *n)
 	return (1);
 }
 
-static int inside_lim(char *n)
+static int	inside_lim(char *n)
 {
 	char	*min;
 	char	*max;

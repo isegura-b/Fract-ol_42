@@ -6,7 +6,7 @@
 /*   By: isegura- <isegura-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:24:35 by isegura-          #+#    #+#             */
-/*   Updated: 2025/02/12 19:44:01 by isegura-         ###   ########.fr       */
+/*   Updated: 2025/02/24 02:24:27 by isegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,25 @@
 # define WIDTH 1500
 # define HEIGHT 1500
 
+# include "../minilibx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+
 typedef struct s_complex
 {
 	double	x;
-	double y; // i
+	double	y;
 }			t_complex;
 
 typedef struct s_img
 {
 	void	*img_ptr;
 	char	*pixels_ptr;
-	int bpp; // bits * pixel
+	int		bpp;
 	int		endian;
 	int		line_len;
 }			t_img;
@@ -38,8 +46,6 @@ typedef struct s_fractal
 	void	*mlx_connection;
 	void	*mlx_window;
 	t_img	img;
-
-	// hooks
 	double	escape_value;
 	int		iterations_defintion;
 	double	shift_x;
@@ -48,14 +54,6 @@ typedef struct s_fractal
 	double	julia_x;
 	double	julia_y;
 }			t_fractal;
-
-# include "../minilibx-linux/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include <math.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
 
 void		error(char *msg);
 int			ft_strncmp(char *s1, char *s2);

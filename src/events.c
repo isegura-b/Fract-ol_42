@@ -6,7 +6,7 @@
 /*   By: isegura- <isegura-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:24:12 by isegura-          #+#    #+#             */
-/*   Updated: 2025/02/12 19:30:09 by isegura-         ###   ########.fr       */
+/*   Updated: 2025/02/24 02:25:22 by isegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_keys(int keysym, t_fractal *fractal)
 		fractal->shift_y -= (0.5 * fractal->zoom);
 	else if (keysym == XK_Shift_R)
 		fractal->iterations_defintion += 10;
-	else if (keysym == XK_Shift_L)	
+	else if (keysym == XK_Shift_L)
 		fractal->iterations_defintion -= 10;
 	fractal_render(fractal);
 	return (0);
@@ -52,4 +52,3 @@ int	ft_mouse(int button, int x, int y, t_fractal *fractal)
 	fractal_render(fractal);
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: isegura- <isegura-@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:26:07 by isegura-          #+#    #+#             */
-/*   Updated: 2025/02/24 01:30:32 by isegura-         ###   ########.fr       */
+/*   Updated: 2025/02/24 02:40:41 by isegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 }
 
 static void	fractal_choose(t_complex *z, t_complex *c, t_fractal *fractal)
-{	
+{
 	if (!ft_strncmp(fractal->name, "julia"))
 	{
 		c->x = fractal->julia_x;
@@ -39,13 +39,16 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	t_complex	z;
 	t_complex	c;
 	int			i;
-	int			colors[5] = {BLUE1, BLUE2, BLUE3, BLUE4, BLUE5};
+	int			colors[5];
 
+	colors[0] = BLUE1;
+	colors[1] = BLUE2;
+	colors[2] = BLUE3;
+	colors[3] = BLUE4;
+	colors[4] = BLUE5;
 	z.x = fractal->zoom * (map(x, -2, +2, WIDTH)) + fractal->shift_x;
 	z.y = fractal->zoom * (map(y, +2, -2, HEIGHT)) + fractal->shift_y;
-	
 	fractal_choose(&z, &c, fractal);
-	
 	my_pixel_put(x, y, &fractal->img, BLACK);
 	i = 0;
 	while (i < fractal->iterations_defintion)
@@ -54,7 +57,7 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
 			my_pixel_put(x, y, &fractal->img, colors[i % 5]);
-			break;
+			break ;
 		}
 		i++;
 	}
